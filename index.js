@@ -66,6 +66,7 @@ class Counter {
    */
   constructor(initialNumber) {
     // ✨ initialize whatever properties are needed
+    this.count = initialNumber
   }
 
   /**
@@ -82,8 +83,14 @@ class Counter {
    */
   countDown() {
     // ✨ implement
+    const result = this.count
+    if (this.count !== 0){
+      this.count -= 1
+    }  
+    return result
   }
 }
+
 
 class Seasons {
   /**
