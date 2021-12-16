@@ -6,9 +6,18 @@
  * EXAMPLE
  * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
  */
+
+
 function trimProperties(obj) {
   // ✨ implement
+  let objCopy = {}
+  Object.keys(obj).forEach((key) => {
+    return objCopy = {...objCopy, [key]:obj[key].trim()}
+  })
+  
+  return objCopy
 }
+
 
 /**
  * [Exercise 2] trimPropertiesMutation trims in place the properties of an object
@@ -20,6 +29,12 @@ function trimProperties(obj) {
  */
 function trimPropertiesMutation(obj) {
   // ✨ implement
+  let objCopy = obj
+  Object.keys(objCopy).forEach((key) => {
+    return objCopy[key] = obj[key].trim()}
+  )
+  
+  return objCopy
 }
 
 /**
@@ -30,10 +45,20 @@ function trimPropertiesMutation(obj) {
  * EXAMPLE
  * findLargestInteger([{ integer: 1 }, { integer: 3 }, { integer: 2 }]) // returns 3
  */
+
+
 function findLargestInteger(integers) {
   // ✨ implement
+  let values=[]
+  let result
+  integers.forEach((obj) => {
+    values.push(Object.values(obj))
+  })
+  values.forEach(index => result = Math.max(values[index]))
+  return result
 }
 
+  
 class Counter {
   /**
    * [Exercise 4A] Counter creates a counter
