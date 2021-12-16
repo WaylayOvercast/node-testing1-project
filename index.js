@@ -136,6 +136,9 @@ class Car {
   constructor(name, tankSize, mpg) {
     this.odometer = 0 // car initilizes with zero miles
     this.tank = tankSize // car initiazes full of gas
+    this.name = name
+    this.mpg = mpg
+    this.roomLeft = tankSize
     // ✨ initialize whatever other properties are needed
   }
 
@@ -154,6 +157,16 @@ class Car {
    */
   drive(distance) {
     // ✨ implement
+    if(distance / this.mpg <= this.tank){
+    this.odometer += distance
+    this.tank =- distance/this.mpg
+    return this.odometer
+    }else{
+      let miles = this.mpg * this.tank
+      this.odometer += miles
+      this.tank = 0
+      return this.odometer
+    }
   }
 
   /**
@@ -169,6 +182,16 @@ class Car {
    */
   refuel(gallons) {
     // ✨ implement
+    
+    if(gallons + this.tank < this.roomLeft){
+      this.tank += gallons
+      let driven = this.mpg * this.tank
+      this.tank =- driven/this.mpg
+      this.odometer += driven
+      return this.odometer
+    }else{
+      return this.odometer
+    }
   }
 }
 
@@ -187,6 +210,7 @@ class Car {
  */
 function isEvenNumberAsync(number) {
   // ✨ implement
+  return !(number%2)
 }
 
 module.exports = {

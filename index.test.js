@@ -124,7 +124,7 @@ describe('[Exercise 5] Seasons', () => {
     
     for(let i = 0; i< 39; i++){ seasons.next() }
     const fourty = seasons.next()
-    
+
     expect(fourty).toBe('spring')
   })
 })
@@ -135,12 +135,34 @@ describe('[Exercise 6] Car', () => {
     focus = new utils.Car('focus', 20, 30) // each test must start with a fresh car
   })
   // test('[15] driving the car returns the updated odometer', () => {})
+  test('[15] driving the car returns the updated odometer', () => {
+    const expected = focus.drive(10)
+    expect(expected).toEqual(10)
+  })
   // test('[16] driving the car uses gas', () => {})
+  test('[16] driving the car uses gas', () => {
+    const before = focus.tank
+    focus.drive(10)
+    const after = focus.tank
+    expect(after).toBeLessThan(before)
+  })
   // test('[17] refueling allows to keep driving', () => {})
+  test('[17] refueling allows to keep driving', () => {
+    const firstDrive = focus.drive(200)
+    focus.refuel(20)
+    const drive = focus.odometer
+    expect(firstDrive).toBeLessThan(drive)
+  })
   // test('[18] adding fuel to a full tank has no effect', () => {})
 })
 
 describe('[Exercise 7] isEvenNumberAsync', () => {
   // test('[19] resolves true if passed an even number', () => {})
+  test('[19] resolves true if passed an even number', () => {
+    expect(utils.isEvenNumberAsync(4)).toEqual(true)
+  })
   // test('[20] resolves false if passed an odd number', () => {})
+  test('[20] resolves false if passed an odd number', () => {
+    expect(utils.isEvenNumberAsync(3)).toEqual(false)
+  })
 })
